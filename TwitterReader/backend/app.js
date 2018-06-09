@@ -2,6 +2,7 @@ const express = require('express');
 var app = express();
 const log4js = require('log4js')
 var twitterRouter = require('./api/routers/twitterRouter')
+const chartRouter = require('./api/routers/chartRouter')
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 });
 //console.log("Before Redirection");
 app.use('/searchTweet', twitterRouter);
+app.use('/charts', chartRouter);
 //console.log("After Redirection ");
 app.use((req, res, next) => {
     console.log("Inside 404 ")

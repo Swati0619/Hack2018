@@ -36,6 +36,24 @@ function getSentiChartData(req, res, next) {
         }
     })
 }
+
+function getDescisonChartData(req, res, next) {
+
+    var rqSearch = {
+        timeFilter: req.body.timeFilter,
+    }
+    if (!rqSearch.timeFilter) {
+        rqSearch.timeFilter = '60 minutes'
+    }
+    chartDao.getBuySellChartData(rqSearch, function (err, data) {
+        if (err) {
+            utils.Error500(req, res, err);
+        }
+        else {
+            utils.SuccessfulPostResponse(req, res, data);
+        }
+    })
+}
 module.exports = {
-    getBPIChartData , getSentiChartData
+    getBPIChartData, getSentiChartData , getDescisonChartData
 }

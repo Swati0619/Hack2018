@@ -11,7 +11,8 @@ pool.on('error', (err) => {
 
 
 function getBPIChartData(data, callback) {
-    var query = "select date_trunc('minute', id_createdtime) as bpiCapture,  USD from bpi where id_createdtime > current_timestamp - interval '" + data.timeFilter + "'"
+    var query = "select to_char(id_createdtime, 'HH:MI') as bpiCapture ,  USD from bpi where id_createdtime > current_timestamp - interval '" + data.timeFilter + "' order by bpiCapture asc"
+    console.log(query);
     pool.query(query, function (err, result) {
         if (err) {
             logger.error("", err);
@@ -24,7 +25,8 @@ function getBPIChartData(data, callback) {
 }
 
 function getSentimentChartData(data, callback) {
-    var query = "select date_trunc('minute', tweeted_time) as timeC,  ROUND(AVG(sentiment_value),1) from tweets where tweeted_time > current_timestamp - interval '" + data.timeFilter + "' group by timeC"
+    var query = "select to_char(tweeted_time, 'HH:MI') as timeC ,  ROUND(AVG(sentiment_value),1) from tweets where tweeted_time > current_timestamp - interval '" + data.timeFilter + "' group by timeC order by timeC asc "
+    console.log(query);
     pool.query(query, function (err, result) {
         if (err) {
             logger.error("", err);
@@ -67,14 +69,31 @@ function calculatingAction(data, callback) {
                         callback(err, null);
                     }
                     else {
-                        callback(null, "BuySell Id :"+data.rows[0].id);
+                        callback(null, data.rows[0].id);
                     }
                 });
             }
             else {
                 callback(null, "No Change ");
             }
+
+            // Save Into the table 
+            // return callback(null,result.rows);
         }
     });
 }
-module.exports = { getBPIChartData, getSentimentChartData, calculatingAction }
+
+function getBuySellChartData(data, callback) {
+    var query = "select to_char(createdAt, 'HH:MI') as timec ,  action from buysell where createdAt > current_timestamp - interval '" + data.timeFilter + "' order by timec asc"
+    console.log(query);
+    pool.query(query, function (err, result) {
+        if (err) {
+            logger.error("", err);
+            return callback(err, null);
+        }
+        else {
+            return callback(null, result.rows);
+        }
+    });
+}
+module.exports = { getBPIChartData, getSentimentChartData, calculatingAction , getBuySellChartData }

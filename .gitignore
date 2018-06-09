@@ -1,0 +1,6 @@
+.idea/
+TwitterReader.iml
+TwitterReader/backend/node_modules/
+TwitterReader/backend/config/twitterConfig.json
+TwitterReader/backend/log/
+TwitterReader/graphs/node_modules/
