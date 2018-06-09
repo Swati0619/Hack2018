@@ -1,0 +1,22 @@
+{
+    "sentiments": {
+        "shambles": -2,
+        "dont": -1,
+        "poor": -2,
+        "f***": -4,
+        "s**t": -3,
+        "rip off":-3,
+        "ripping off" :-3,
+        "fuck": -4,
+        "fucking": -4
+    },
+    "questions": [
+        "?",
+        "what",
+        "how",
+        "when",
+        "where",
+        "do you"
+    ],
+    "currency":["$BTC"]
+}

@@ -1,0 +1,7 @@
+{
+    "user": "postgres",
+    "host": "localhost",
+    "database": "twitterdata",
+    "password": "root",
+    "port":  5432
+}
