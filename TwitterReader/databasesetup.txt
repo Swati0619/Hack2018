@@ -1,3 +1,13 @@
+create table buysell
+(
+	id serial not null
+		constraint buysell_pkey
+			primary key,
+	pricedelta numeric,
+	avgsentiment numeric,
+	action varchar(10),
+	createdat timestamp default now()
+);
 CREATE TABLE bpi
 (
     id INTEGER DEFAULT nextval('bpi_id_seq'::regclass) PRIMARY KEY NOT NULL,
