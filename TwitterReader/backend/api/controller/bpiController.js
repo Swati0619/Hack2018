@@ -15,7 +15,6 @@ function getCurrentBpi(callback){
             eur:jsonResponse.bpi.EUR.rate_float
         }
         bpiData.saveBpi(dataToInsert, function(err,data){
-            //console.log(jsonResponse);
             if(err){
                 return callback(err,null);
             }
