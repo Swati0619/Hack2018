@@ -27,5 +27,9 @@ Navigate to the parent folder `hack2018`
 
 run below command 
 ```
-node server.js
+cd TwitterReader\backend
 ```
+```
+node .
+```
+
