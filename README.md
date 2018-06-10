@@ -30,6 +30,9 @@ run below command
 cd TwitterReader\backend
 ```
 ```
+npm install
+```
+```
 node .
 ```
 
