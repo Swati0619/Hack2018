@@ -483,3 +483,7 @@ footer.sticky-footer {
   background-size: cover;
   background-position: center;
 }
+
+#chart_div2 circle {
+  r: 7;
+}

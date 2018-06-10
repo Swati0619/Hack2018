@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-
+app.use('/chartPages', express.static('graphs'));
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 app.use((req, res, next) => {
     console.log("Inside app use ")
@@ -21,9 +21,9 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-    console.log("Inside app use 1")
+    //console.log("Inside app use 1")
     if (req.method === 'OPTIONS') {
-        console.log("ahgdhagdh"+ req.method)
+       // console.log("ahgdhagdh"+ req.method)
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         return res.status(200).json({});
     }

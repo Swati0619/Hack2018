@@ -107,8 +107,34 @@ function drawVisualization() {
     var data = google.visualization.arrayToDataTable(barChartArr);
     var options = {
         title: '',
+        hAxis:{
+            title:'Time',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        },
+        vAxis:{
+            title:'Rate in USD ',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        }
        // curveType: 'function',
-        legend: { position: 'bottom' }
+       // legend: { position: 'bottom' }
       };
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
     chart.draw(data, options);
@@ -127,8 +153,33 @@ function drawSentimentChart() {
     var data = google.visualization.arrayToDataTable(barChartArr);
     var options = {
         title: '',
-       // curveType: 'function',
-        legend: { position: 'bottom' }
+       // curveType: 'function'
+        hAxis:{
+            title:'Time',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        },
+        vAxis:{
+            title:'Average Sentiment Value ',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        }
       };
     var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
     chart.draw(data, options);
@@ -144,11 +195,11 @@ function drawBuySellChart() {
          if(buySellChartData[x].action == "BUY")
          {
              tempArr.push(1);
-             tempArr.push('point {  fill-color: green; }')
+             tempArr.push('point { pointSize: 18;  fill-color: green; }')
          } else if(buySellChartData[x].action == "SELL" )
          {
             tempArr.push(1);
-            tempArr.push('point {  fill-color: red; }')
+            tempArr.push('point {  pointSize: 18;  fill-color: red; }')
          }else{
             tempArr.push(1);
             tempArr.push('point {  fill-color: yellow; }')
@@ -162,7 +213,33 @@ function drawBuySellChart() {
     var options = {
         title: '',
        // curveType: 'function',
-        legend: { position: 'bottom' }
+      //  legend: { position: 'bottom' },
+        hAxis:{
+            title:'Time',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        },
+        vAxis:{
+            title:'Action ',textStyle: {
+                color: 'black',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }, titleTextStyle: {
+                color: '#01579b',
+                fontSize: 12,
+                fontName: 'Arial',
+                bold: true
+            }
+        }
       };
     var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
     chart.draw(data, options);
