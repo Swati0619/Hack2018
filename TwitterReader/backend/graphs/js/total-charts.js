@@ -107,18 +107,18 @@ function drawVisualization() {
         hAxis:{
             title:'Time',textStyle: {
                 color: 'black',
-                fontSize: 12,
+                fontSize: 10,
                 fontName: 'Arial',
                 bold: true
             }, titleTextStyle: {
                 color: '#01579b',
-                fontSize: 12,
+                fontSize: 10,
                 fontName: 'Arial',
                 bold: true
-            }
+            },direction:-1, slantedText:true, slantedTextAngle:90
         },
         vAxis:{
-            title:'Rate in USD ',textStyle: {
+            title:'BitCoin Price in USD ',textStyle: {
                 color: 'black',
                 fontSize: 12,
                 fontName: 'Arial',
@@ -162,10 +162,10 @@ function drawSentimentChart() {
                 fontSize: 12,
                 fontName: 'Arial',
                 bold: true
-            }
+            }, textPosition:'none'
         },
         vAxis:{
-            title:'Average Sentiment Value ',textStyle: {
+            title:'Sentiment Score ',textStyle: {
                 color: 'black',
                 fontSize: 12,
                 fontName: 'Arial',
@@ -175,7 +175,7 @@ function drawSentimentChart() {
                 fontSize: 12,
                 fontName: 'Arial',
                 bold: true
-            }
+            } 
         }
       };
     var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
@@ -199,7 +199,7 @@ function drawBuySellChart() {
             tempArr.push('point {  pointSize: 18;  fill-color: red; }')
          }else{
             tempArr.push(1);
-            tempArr.push('point {  fill-color: yellow; }')
+            tempArr.push('point {  fill-color: #99ccff; }')
          }
          
         // tempArr.push(parseFloat(sentiChartData[x].round));
@@ -214,18 +214,18 @@ function drawBuySellChart() {
         hAxis:{
             title:'Time',textStyle: {
                 color: 'black',
-                fontSize: 12,
+                fontSize: 9,
                 fontName: 'Arial',
                 bold: true
             }, titleTextStyle: {
                 color: '#01579b',
-                fontSize: 12,
+                fontSize: 9,
                 fontName: 'Arial',
                 bold: true
-            }
+            },direction:-1, slantedText:true, slantedTextAngle:90
         },
         vAxis:{
-            title:'Action ',textStyle: {
+            title:'ACT',textStyle: {
                 color: 'black',
                 fontSize: 12,
                 fontName: 'Arial',
@@ -235,7 +235,9 @@ function drawBuySellChart() {
                 fontSize: 12,
                 fontName: 'Arial',
                 bold: true
-            }
+            } ,
+            gridlineColor: '#fff',
+            textPosition: 'none'
         }
       };
     var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
