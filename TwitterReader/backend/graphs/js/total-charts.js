@@ -4,10 +4,7 @@ var sentiChartData= [];
 var buySellChartData= [];
 var pieChartData = [];
 $(document).ready(function () {
- 
-    getStatisticsABC();
-    getSentimentChart();
-    getBuySellChart();
+ loadAllCharts()
 });
 console.log(chartData);
 function loadTwitterhandles() {
@@ -195,7 +192,7 @@ function drawBuySellChart() {
          if(buySellChartData[x].action == "BUY")
          {
              tempArr.push(1);
-             tempArr.push('point { pointSize: 18;  fill-color: green; }')
+             tempArr.push('point { pointSize: 18;  fill-color: #28a745; }')
          } else if(buySellChartData[x].action == "SELL" )
          {
             tempArr.push(1);
@@ -245,56 +242,10 @@ function drawBuySellChart() {
     chart.draw(data, options);
 }
 
-function callToSearchData() {
-    var selectedHandle = $("#tweetSelect").val();
-    callSearchAPI(selectedHandle);
-    getStatistics(selectedHandle);
-    //   getStatistics(selectedHandle);
-    //console.log(selectedHandle)
+function loadAllCharts(){
+    console.log("Inside Load All Charts");
+    getStatisticsABC();
+    getSentimentChart();
+    getBuySellChart();
 }
-function callSearchAPI(selected) {
-    $.ajax({
-        url: baseURL + '/searchTweet',
-        type: 'post',
-        dataType: 'json',
-        data: {
-            "searchTerm": selected
-        },
-        success: function (data) {
-            console.log(data);
-            //   getStatistics(selectedHandle);
-        }
-    });
-}
-function loadPieChart() {
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(drawPieChart);
-}
-function drawPieChart() {
-    var dataArray = new Array();
-    dataArray.push(["Sentiments", "No of Tweets"])
-    dataArray.push(['Positive', pieChartData.positive])
-    dataArray.push(['Negative', pieChartData.negative])
-    dataArray.push(['Query', pieChartData.question])
-    dataArray.push(['Other', pieChartData.other])
-
-    // var data = google.visualization.arrayToDataTable([
-    //     ['Sentiments', 'No of Tweets'],
-    //     ['Positive', 11],
-    //     ['Negative', 2],
-    //     ['Neutral', 2]
-    // ]);
-    var data = google.visualization.arrayToDataTable(dataArray);
-    var options = {
-        is3D: true,
-        slices: {
-            0: { color: '#28a745' },
-            1: { color: '#dc3545' },
-            2: { color: '#007bff' },
-            3: { color: '#ffc107' }
-        }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
-    chart.draw(data, options);
-}
+window.setInterval(loadAllCharts,60000);
