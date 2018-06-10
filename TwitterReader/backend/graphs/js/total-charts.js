@@ -115,7 +115,7 @@ function drawVisualization() {
                 fontSize: 10,
                 fontName: 'Arial',
                 bold: true
-            },direction:-1, slantedText:true, slantedTextAngle:90
+            },slantedText:true, slantedTextAngle:90
         },
         vAxis:{
             title:'BitCoin Price in USD ',textStyle: {
@@ -185,6 +185,7 @@ function drawSentimentChart() {
 function drawBuySellChart() {
     var barChartArr = new Array();
     barChartArr.push(['Action', 'Time ', {'type': 'string', 'role': 'style'}]);
+    console.log(buySellChartData.length);
     for (var x = 0; x < buySellChartData.length; x++) {
          var tempArr = new Array();
          tempArr.push(buySellChartData[x].timec);
@@ -192,14 +193,14 @@ function drawBuySellChart() {
          if(buySellChartData[x].action == "BUY")
          {
              tempArr.push(1);
-             tempArr.push('point { pointSize: 18;  fill-color: #28a745; }')
+             tempArr.push('point { pointSize: 12;  fill-color: #28a745; }')
          } else if(buySellChartData[x].action == "SELL" )
          {
             tempArr.push(1);
-            tempArr.push('point {  pointSize: 18;  fill-color: red; }')
+            tempArr.push('point {  pointSize: 12;  fill-color: red; }')
          }else{
             tempArr.push(1);
-            tempArr.push('point {  fill-color: #99ccff; }')
+            tempArr.push('point { pointSize: 12; fill-color: #99ccff; }')
          }
          
         // tempArr.push(parseFloat(sentiChartData[x].round));
@@ -222,7 +223,7 @@ function drawBuySellChart() {
                 fontSize: 9,
                 fontName: 'Arial',
                 bold: true
-            },direction:-1, slantedText:true, slantedTextAngle:90
+            }, slantedText:true, slantedTextAngle:90
         },
         vAxis:{
             title:'ACT',textStyle: {
